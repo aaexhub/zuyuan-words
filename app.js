@@ -1,6 +1,7 @@
 const STORAGE_KEY = "wordAppStateV2";
 const DAILY_GOAL = 5;
-const APP_VERSION = "2026-02-26-v4";  // 版本号，用于强制刷新缓存
+const APP_VERSION = "2026-02-27-v1";  // 版本号，用于强制刷新缓存
+const PAGE_SIZE = 20;  // 每页显示20条
 
 const state = {
   books: {},
@@ -18,7 +19,10 @@ const state = {
   wordHidden: false,  // 单词是否隐藏
   shuffleMode: false,  // 是否打乱顺序
   sequentialIndex: 0,  // 顺序学习的索引
-  appState: loadState()
+  appState: loadState(),
+  // 分页状态
+  wrongPage: 1,
+  learnedPage: 1
 };
 
 const el = {};
@@ -599,13 +603,26 @@ function renderWrongBook() {
   el.wrongList.innerHTML = "";
   if (!redWords.length) {
     el.wrongList.innerHTML = "<li>暂无错词</li>";
+    document.getElementById("wrong-pagination").innerHTML = "";
     return;
   }
 
-  redWords.forEach((item) => {
+  // 分页
+  const totalPages = Math.ceil(redWords.length / PAGE_SIZE);
+  const start = (state.wrongPage - 1) * PAGE_SIZE;
+  const end = start + PAGE_SIZE;
+  const pageWords = redWords.slice(start, end);
+
+  pageWords.forEach((item) => {
     const li = document.createElement("li");
     li.innerHTML = `<strong>${item.word}</strong> ${item.chinese} <small>${item.bookName}</small>`;
     el.wrongList.appendChild(li);
+  });
+
+  // 渲染分页
+  renderPagination("wrong-pagination", state.wrongPage, totalPages, (page) => {
+    state.wrongPage = page;
+    renderWrongBook();
   });
 }
 
@@ -625,14 +642,29 @@ function renderLearnedList() {
   el.learnedList.innerHTML = "";
   if (!words.length) {
     el.learnedList.innerHTML = "<li>暂无已学单词</li>";
+    document.getElementById("learned-pagination").innerHTML = "";
     return;
   }
 
-  words.forEach((item) => {
+  // 分页
+  const totalPages = Math.ceil(words.length / PAGE_SIZE);
+  const start = (state.learnedPage - 1) * PAGE_SIZE;
+  const end = start + PAGE_SIZE;
+  const pageWords = words.slice(start, end);
+
+  pageWords.forEach((item) => {
     const mark = item.mark === "green" ? "🟢" : item.mark === "yellow" ? "🟡" : "🔴";
     const li = document.createElement("li");
     li.innerHTML = `${mark} <strong>${item.word}</strong> ${item.chinese}`;
     el.learnedList.appendChild(li);
+  });
+
+  // 渲染分页
+  renderPagination("learned-pagination", state.learnedPage, totalPages, (page) => {
+    state.learnedPage = page;
+    renderLearnedList();
+  });
+}
   });
 }
 
@@ -676,6 +708,35 @@ function startLearnedReview() {
   state.wordHistory = [];
   state.currentIndex = -1;
   nextQuestion();
+}
+
+function renderPagination(containerId, currentPage, totalPages, onPageChange) {
+  const container = document.getElementById(containerId);
+  if (!container || totalPages <= 1) {
+    if (container) container.innerHTML = "";
+    return;
+  }
+
+  container.innerHTML = "";
+  
+  const prevBtn = document.createElement("button");
+  prevBtn.className = "btn ghost";
+  prevBtn.textContent = "上一页";
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.addEventListener("click", () => onPageChange(currentPage - 1));
+  container.appendChild(prevBtn);
+
+  const pageInfo = document.createElement("span");
+  pageInfo.className = "page-info";
+  pageInfo.textContent = ` ${currentPage} / ${totalPages} `;
+  container.appendChild(pageInfo);
+
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "btn ghost";
+  nextBtn.textContent = "下一页";
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.addEventListener("click", () => onPageChange(currentPage + 1));
+  container.appendChild(nextBtn);
 }
 
 function renderCalendar() {

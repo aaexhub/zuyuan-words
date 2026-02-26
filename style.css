@@ -711,3 +711,20 @@ select.btn.ghost {
 .unit-btn.active .unit-count {
   color: rgba(255,255,255,0.8);
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.page-info {
+  font-size: 14px;
+  color: #666;
+  min-width: 60px;
+  text-align: center;
+}
