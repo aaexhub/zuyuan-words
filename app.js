@@ -1,6 +1,6 @@
 const STORAGE_KEY = "wordAppStateV2";
 const DAILY_GOAL = 5;
-const APP_VERSION = "2026-02-26-v3";  // 版本号，用于强制刷新缓存
+const APP_VERSION = "2026-02-26-v4";  // 版本号，用于强制刷新缓存
 
 const state = {
   books: {},
@@ -24,7 +24,8 @@ const state = {
 const el = {};
 
 function initElements() {
-  el.bookGrid = document.getElementById("book-grid");
+  el.grade7Books = document.getElementById("grade7-books");
+  el.grade8Books = document.getElementById("grade8-books");
   el.selectorPanel = document.getElementById("selector-panel");
   el.learnPanel = document.getElementById("learn-panel");
   el.bookTitle = document.getElementById("book-title");
@@ -207,8 +208,16 @@ function toggleShuffleMode() {
 }
 
 function renderBooks() {
-  el.bookGrid.innerHTML = "";
-  Object.entries(state.books).forEach(([bookKey, book]) => {
+  el.grade7Books.innerHTML = "";
+  el.grade8Books.innerHTML = "";
+  
+  const grade7Keys = ["grade7_upper", "grade7_lower"];
+  const grade8Keys = ["grade8_upper", "grade8_lower"];
+  
+  // 渲染七年级
+  grade7Keys.forEach(bookKey => {
+    if (!state.books[bookKey]) return;
+    const book = state.books[bookKey];
     const learnedCount = countLearnedWords(bookKey);
     const total = book.hasUnits 
       ? (book.units || []).reduce((sum, u) => sum + u.words.length, 0)
@@ -224,7 +233,29 @@ function renderBooks() {
         selectBook(bookKey, null, btn);
       }
     });
-    el.bookGrid.appendChild(btn);
+    el.grade7Books.appendChild(btn);
+  });
+  
+  // 渲染八年级
+  grade8Keys.forEach(bookKey => {
+    if (!state.books[bookKey]) return;
+    const book = state.books[bookKey];
+    const learnedCount = countLearnedWords(bookKey);
+    const total = book.hasUnits 
+      ? (book.units || []).reduce((sum, u) => sum + u.words.length, 0)
+      : book.words.length;
+    
+    const btn = document.createElement("button");
+    btn.className = "book-btn";
+    btn.innerHTML = `<strong>${book.name}</strong><br><small>${learnedCount}/${total} 词</small>`;
+    btn.addEventListener("click", () => {
+      if (book.hasUnits) {
+        showUnitSelector(bookKey, btn);
+      } else {
+        selectBook(bookKey, null, btn);
+      }
+    });
+    el.grade8Books.appendChild(btn);
   });
 }
 

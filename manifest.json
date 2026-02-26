@@ -1,6 +1,6 @@
 {
-  "name": "祖源单词记忆",
-  "short_name": "单词记忆",
+  "name": "外研社英语单词记忆",
+  "short_name": "外研社单词",
   "description": "胡祖源的英语单词学习助手",
   "start_url": "/zuyuan-words/",
   "display": "standalone",

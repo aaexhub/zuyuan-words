@@ -82,6 +82,34 @@ body {
   gap: 10px;
 }
 
+.grade-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.grade-row:first-child {
+  margin-top: 0;
+}
+
+.grade-label {
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 60px;
+  font-size: 15px;
+}
+
+.book-row {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.book-row .book-btn {
+  flex: 1;
+}
+
 .book-btn {
   border: 1px solid var(--line);
   background: var(--card);
