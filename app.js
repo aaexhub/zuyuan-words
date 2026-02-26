@@ -211,6 +211,11 @@ function toggleShuffleMode() {
 }
 
 function renderBooks() {
+  if (!el.grade7Books || !el.grade8Books) {
+    console.error("grade7Books or grade8Books not found");
+    return;
+  }
+  
   el.grade7Books.innerHTML = "";
   el.grade8Books.innerHTML = "";
   
@@ -219,7 +224,10 @@ function renderBooks() {
   
   // 渲染七年级
   grade7Keys.forEach(bookKey => {
-    if (!state.books[bookKey]) return;
+    if (!state.books[bookKey]) {
+      console.warn(`${bookKey} not found in state.books`);
+      return;
+    }
     const book = state.books[bookKey];
     const learnedCount = countLearnedWords(bookKey);
     const total = book.hasUnits 
@@ -241,7 +249,10 @@ function renderBooks() {
   
   // 渲染八年级
   grade8Keys.forEach(bookKey => {
-    if (!state.books[bookKey]) return;
+    if (!state.books[bookKey]) {
+      console.warn(`${bookKey} not found in state.books`);
+      return;
+    }
     const book = state.books[bookKey];
     const learnedCount = countLearnedWords(bookKey);
     const total = book.hasUnits 
@@ -260,6 +271,8 @@ function renderBooks() {
     });
     el.grade8Books.appendChild(btn);
   });
+  
+  console.log("renderBooks completed");
 }
 
 function showUnitSelector(bookKey, bookBtn) {
