@@ -184,7 +184,7 @@ body {
 
 .card h3 {
   margin: 0;
-  font-size: 34px;
+  font-size: 40px;
   letter-spacing: 0.3px;
 }
 
@@ -216,6 +216,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  width: 100%;
 }
 
 .option-label {
