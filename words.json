@@ -3308,19 +3308,19 @@
             "word": "crowded",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "拥挤的"
+            "chinese": "挤满人（物）的；拥挤的"
           },
           {
             "word": "disaster",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "灾难"
+            "chinese": "灾难，灾祸"
           },
           {
             "word": "therefore",
             "phonetic": "",
-            "pos": "adv.",
-            "chinese": "因此"
+            "pos": "n.",
+            "chinese": "因此，由此，所以"
           },
           {
             "word": "cover",
@@ -3332,19 +3332,19 @@
             "word": "instead",
             "phonetic": "",
             "pos": "adv.",
-            "chinese": "代替"
+            "chinese": "代替；… 而不是…"
           },
           {
             "word": "although",
             "phonetic": "",
             "pos": "conj.",
-            "chinese": "虽然"
+            "chinese": "虽然，尽管"
           },
           {
             "word": "bathroom",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "浴室"
+            "chinese": "浴室，卫生间"
           },
           {
             "word": "quickly",
@@ -3356,19 +3356,13 @@
             "word": "truly",
             "phonetic": "",
             "pos": "adv.",
-            "chinese": "真实地"
-          },
-          {
-            "word": "paint",
-            "phonetic": "",
-            "pos": "v.",
-            "chinese": "涂颜料"
+            "chinese": "真实地，确实地"
           },
           {
             "word": "yet",
             "phonetic": "",
             "pos": "adv.",
-            "chinese": "还"
+            "chinese": "还，尚"
           },
           {
             "word": "already",
@@ -3380,91 +3374,79 @@
             "word": "difference",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "差异"
+            "chinese": "差别，差异"
           },
           {
             "word": "hate",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "讨厌"
+            "chinese": "讨厌，不喜欢"
           },
           {
             "word": "successful",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "有成就的"
+            "chinese": "有成就的，出人头地的"
           },
           {
             "word": "scientific",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "科学的"
+            "chinese": "科学（上）的"
           },
           {
             "word": "wise",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "明智的"
-          },
-          {
-            "word": "perfect",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "完成式"
+            "chinese": "明智的，明断的"
           },
           {
             "word": "underline",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "画线"
+            "chinese": "在… 之下画线"
           },
           {
             "word": "row",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "一排"
+            "chinese": "一排，一行，一列"
           },
           {
             "word": "primary",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "小学的"
+            "chinese": "小学教育的，初级教育的"
           },
           {
             "word": "reach",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "伸手"
+            "chinese": "伸；伸手（以触碰或提起某物）"
           },
           {
             "word": "height",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "身高"
+            "chinese": "身高；高，高度"
           },
           {
             "word": "literature",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "文学"
+            "chinese": "文学；文学作品"
           },
           {
             "word": "search",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "搜寻"
+            "chinese": "寻找；搜寻"
           },
           {
             "word": "value",
             "phonetic": "",
             "pos": "n.",
             "chinese": "价值"
-          },
-          {
-            "word": "character",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "角色"
           },
           {
             "word": "wizard",
@@ -3476,19 +3458,19 @@
             "word": "impossible",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "不可能的"
+            "chinese": "不可能发生的；办不到的"
           },
           {
             "word": "nothing",
             "phonetic": "",
             "pos": "pron.",
-            "chinese": "没有任何东西"
+            "chinese": "没有任何东西；没有事"
           },
           {
             "word": "British",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "英国的"
+            "chinese": "英国的；英国人的"
           },
           {
             "word": "actress",
@@ -3500,13 +3482,7 @@
             "word": "silver",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "银制的"
-          },
-          {
-            "word": "silver screen",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "电影业"
+            "chinese": "银制的，银质的"
           },
           {
             "word": "doubt",
@@ -3518,19 +3494,19 @@
             "word": "fear",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "害怕"
+            "chinese": "害怕，恐惧；担忧"
           },
           {
             "word": "succeed",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "成功"
+            "chinese": "成功，达成"
           },
           {
             "word": "excellent",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "卓越的"
+            "chinese": "卓越的；极好的"
           },
           {
             "word": "second",
@@ -3542,13 +3518,13 @@
             "word": "satisfy",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "使满意"
+            "chinese": "使（某人）满意"
           },
           {
             "word": "risky",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "有风险的"
+            "chinese": "有危险的，有风险的"
           },
           {
             "word": "zero",
@@ -3560,13 +3536,13 @@
             "word": "athlete",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "运动员"
+            "chinese": "运动员；田径运动员"
           },
           {
             "word": "Olympics",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "奥运会"
+            "chinese": "奥林匹克运动会，奥运会"
           },
           {
             "word": "youngster",
@@ -3578,7 +3554,7 @@
             "word": "stick",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "粘贴"
+            "chinese": "粘，贴"
           },
           {
             "word": "superman",
@@ -3596,31 +3572,25 @@
             "word": "large",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "巨大的"
+            "chinese": "巨大的，大的"
           },
           {
             "word": "shout",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "喊叫"
-          },
-          {
-            "word": "gate",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "大门"
+            "chinese": "大声说，喊叫，呼喊"
           },
           {
             "word": "build",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "建造"
+            "chinese": "建造，盖；造"
           },
           {
             "word": "since",
             "phonetic": "",
             "pos": "prep.",
-            "chinese": "自从"
+            "chinese": "自从…以来；自从…之后"
           },
           {
             "word": "nor",
@@ -3632,37 +3602,31 @@
             "word": "hole",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "洞"
+            "chinese": "洞，孔，坑"
           },
           {
             "word": "glad",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "高兴的"
+            "chinese": "高兴的，开心的"
           },
           {
             "word": "knock",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "敲"
+            "chinese": "碰撞；碰倒，撞倒"
           },
           {
             "word": "afraid",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "害怕的"
-          },
-          {
-            "word": "message",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "要旨"
+            "chinese": "害怕的，恐惧的"
           },
           {
             "word": "double",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "双倍的"
+            "chinese": "双倍的，两倍的"
           },
           {
             "word": "introduction",
@@ -3674,19 +3638,19 @@
             "word": "return",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "返回"
+            "chinese": "返回，回来，回去"
           },
           {
             "word": "lively",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "充满活力的"
+            "chinese": "充满活力的，生气勃勃的"
           },
           {
             "word": "theirs",
             "phonetic": "",
             "pos": "pron.",
-            "chinese": "他们的"
+            "chinese": "他们的，她们的（用于指代属于前面所提之人的东西）"
           },
           {
             "word": "grade",
@@ -3695,22 +3659,16 @@
             "chinese": "年级"
           },
           {
-            "word": "article",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "文章"
-          },
-          {
             "word": "priceless",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "无价的"
+            "chinese": "极其贵重的；无价的"
           },
           {
             "word": "offer",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "提供"
+            "chinese": "提供，给予"
           },
           {
             "word": "plan",
@@ -3722,31 +3680,31 @@
             "word": "quite",
             "phonetic": "",
             "pos": "adv.",
-            "chinese": "很"
+            "chinese": "很；较为"
           },
           {
             "word": "stressed",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "紧张的"
+            "chinese": "焦虑的，紧张的，无法放松的"
           },
           {
             "word": "recently",
             "phonetic": "",
             "pos": "adv.",
-            "chinese": "最近"
+            "chinese": "最近，近来，不久前"
           },
           {
             "word": "online",
             "phonetic": "",
             "pos": "adv.",
-            "chinese": "在线"
+            "chinese": "从网上，在网上"
           },
           {
             "word": "personal",
             "phonetic": "",
             "pos": "adj.",
-            "chinese": "私人的"
+            "chinese": "个人的，私人的"
           },
           {
             "word": "narrow",
@@ -3758,49 +3716,25 @@
             "word": "lane",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "小巷"
-          },
-          {
-            "word": "unit",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "单位"
+            "chinese": "…巷（常用于路名中）"
           },
           {
             "word": "perhaps",
             "phonetic": "",
             "pos": "adv.",
-            "chinese": "也许"
+            "chinese": "可能，大概，也许"
           },
           {
             "word": "argue",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "争论"
-          },
-          {
-            "word": "divide",
-            "phonetic": "",
-            "pos": "v.",
-            "chinese": "分开"
-          },
-          {
-            "word": "dividing line",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "分界线"
-          },
-          {
-            "word": "agreement",
-            "phonetic": "",
-            "pos": "n.",
-            "chinese": "一致"
+            "chinese": "争论，争吵"
           },
           {
             "word": "relative",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "亲戚"
+            "chinese": "家人；亲戚"
           },
           {
             "word": "government",
@@ -3812,43 +3746,955 @@
             "word": "poem",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "诗"
-          },
-          {
-            "word": "inside",
-            "phonetic": "",
-            "pos": "adv.",
-            "chinese": "里面"
+            "chinese": "诗；韵文"
           },
           {
             "word": "neighbour",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "邻居"
+            "chinese": "邻居，邻人"
           },
           {
             "word": "act",
             "phonetic": "",
             "pos": "n.",
-            "chinese": "行为"
+            "chinese": "行为，行动，动作，举动"
           },
           {
             "word": "deeply",
             "phonetic": "",
             "pos": "adv.",
-            "chinese": "深深地"
+            "chinese": "非常，很深地"
           },
           {
             "word": "pass",
             "phonetic": "",
             "pos": "v.",
-            "chinese": "流逝"
+            "chinese": "过去，流逝"
           },
           {
             "word": "whenever",
             "phonetic": "",
             "pos": "conj.",
             "chinese": "每当"
+          }
+        ]
+      },
+      {
+        "unit": 3,
+        "name": "Unit 3",
+        "words": [
+          {
+            "word": "fair",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "展览会"
+          },
+          {
+            "word": "block",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "一块（指木头、石头等有直边的硬物）"
+          },
+          {
+            "word": "artificial",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "人造的，人工的"
+          },
+          {
+            "word": "condition",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "健康情况"
+          },
+          {
+            "word": "cost",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "价格为，需支付（某一数量的钱）"
+          },
+          {
+            "word": "lend",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "帮助（某人）做事（尤指需要体力的事）；（给某人）搭把手"
+          },
+          {
+            "word": "3-D",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "三维的，立体的"
+          },
+          {
+            "word": "invent",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "发明，创造"
+          },
+          {
+            "word": "brain",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "脑，大脑"
+          },
+          {
+            "word": "weigh",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "重，重量是…"
+          },
+          {
+            "word": "kilogram",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "千克，公斤"
+          },
+          {
+            "word": "fix",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "解决（问题）"
+          },
+          {
+            "word": "invention",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "发明（物）（如机器、工具、仪器等）"
+          },
+          {
+            "word": "download",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "下载（信息或程序）"
+          },
+          {
+            "word": "allow",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "允许，容许，准许"
+          },
+          {
+            "word": "report",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "新闻报道"
+          },
+          {
+            "word": "apply",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "应用，运用"
+          },
+          {
+            "word": "blind",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "盲的，失明的"
+          },
+          {
+            "word": "machine",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "机器"
+          },
+          {
+            "word": "warn",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "警告，告诫；提醒"
+          },
+          {
+            "word": "object",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "物体"
+          },
+          {
+            "word": "sense",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "检测并记录"
+          },
+          {
+            "word": "nearby",
+            "phonetic": "",
+            "pos": "adv.",
+            "chinese": "附近"
+          },
+          {
+            "word": "congratulation",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "恭喜，祝贺"
+          },
+          {
+            "word": "advertisement",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "广告；启事"
+          },
+          {
+            "word": "everyday",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "日常的；平常的；每天的"
+          },
+          {
+            "word": "trouble",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "使忧虑，使苦恼"
+          },
+          {
+            "word": "imaginative",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "富有想象力的；创新的"
+          },
+          {
+            "word": "inventor",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "发明者，发明家"
+          },
+          {
+            "word": "quality",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "品性"
+          },
+          {
+            "word": "glue",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "胶，胶水"
+          },
+          {
+            "word": "talent",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "天资，天赋，才能"
+          },
+          {
+            "word": "electricity",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "电"
+          },
+          {
+            "word": "lightning",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "闪电"
+          },
+          {
+            "word": "pioneer",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "先驱，先锋，创始人"
+          },
+          {
+            "word": "exploration",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "探索；探险；勘探；勘查"
+          },
+          {
+            "word": "test",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "验证；检验"
+          },
+          {
+            "word": "despite",
+            "phonetic": "",
+            "pos": "prep.",
+            "chinese": "尽管，虽然，任凭"
+          },
+          {
+            "word": "curiosity",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "好奇心"
+          },
+          {
+            "word": "future",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "将来的，未来的"
+          },
+          {
+            "word": "failure",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "失败"
+          },
+          {
+            "word": "explorer",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "探险者，勘察者"
+          },
+          {
+            "word": "risk",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "冒险举动"
+          },
+          {
+            "word": "drive",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "促使（某人做某事）"
+          },
+          {
+            "word": "towards",
+            "phonetic": "",
+            "pos": "prep.",
+            "chinese": "朝，向，接近（某种结果）"
+          },
+          {
+            "word": "spend",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "度过，花（时间）"
+          },
+          {
+            "word": "earthquake",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "地震"
+          },
+          {
+            "word": "keyhole",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "锁眼，钥匙孔"
+          }
+        ]
+      },
+      {
+        "unit": 4,
+        "name": "Unit 4",
+        "words": [
+          {
+            "word": "digital",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "数字的，数码的"
+          },
+          {
+            "word": "century",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "世纪"
+          },
+          {
+            "word": "forever",
+            "phonetic": "",
+            "pos": "adv.",
+            "chinese": "永远"
+          },
+          {
+            "word": "pound",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "英镑"
+          },
+          {
+            "word": "smartphone",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "智能手机"
+          },
+          {
+            "word": "payment",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "支付，付款"
+          },
+          {
+            "word": "cash",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "现款，现金"
+          },
+          {
+            "word": "app",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "应用程序，应用软件"
+          },
+          {
+            "word": "oven",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "烤箱"
+          },
+          {
+            "word": "except",
+            "phonetic": "",
+            "pos": "prep.",
+            "chinese": "除…之外"
+          },
+          {
+            "word": "convenient",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "方便的，便利的；合宜的"
+          },
+          {
+            "word": "development",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "进步，发展"
+          },
+          {
+            "word": "mobile",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "非固定的，移动式的"
+          },
+          {
+            "word": "anywhere",
+            "phonetic": "",
+            "pos": "adv.",
+            "chinese": "任何地方，无论何处，随便哪里"
+          },
+          {
+            "word": "via",
+            "phonetic": "",
+            "pos": "prep.",
+            "chinese": "通过"
+          },
+          {
+            "word": "progress",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "进步，进展"
+          },
+          {
+            "word": "offline",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "未联网的，不在线的"
+          },
+          {
+            "word": "simply",
+            "phonetic": "",
+            "pos": "adv.",
+            "chinese": "只是，仅仅"
+          },
+          {
+            "word": "save",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "节省，节约"
+          },
+          {
+            "word": "advantage",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "好处，优点"
+          },
+          {
+            "word": "effect",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "效应，影响，结果"
+          },
+          {
+            "word": "attitude",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "看法，态度"
+          },
+          {
+            "word": "device",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "设备，仪器"
+          },
+          {
+            "word": "strange",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "奇怪的，不寻常的；不可思议的"
+          },
+          {
+            "word": "throw",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "投，扔，抛，掷"
+          },
+          {
+            "word": "guess",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "猜，猜测"
+          },
+          {
+            "word": "anyone",
+            "phonetic": "",
+            "pos": "pron.",
+            "chinese": "有人，任何人"
+          },
+          {
+            "word": "bedroom",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "卧室"
+          },
+          {
+            "word": "neighbourhood",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "社区，住宅小区；四邻，街坊"
+          }
+        ]
+      },
+      {
+        "unit": 5,
+        "name": "Unit 5",
+        "words": [
+          {
+            "word": "opposite",
+            "phonetic": "",
+            "pos": "prep.",
+            "chinese": "在…的对面"
+          },
+          {
+            "word": "picnic",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "野餐"
+          },
+          {
+            "word": "smelly",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "有臭味的"
+          },
+          {
+            "word": "cheese",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "干酪，奶酪"
+          },
+          {
+            "word": "noise",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "噪声；嘈杂声"
+          },
+          {
+            "word": "reduce",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "缩小；减少；降低"
+          },
+          {
+            "word": "kick",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "踢"
+          },
+          {
+            "word": "seat",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "座，座位"
+          },
+          {
+            "word": "anything",
+            "phonetic": "",
+            "pos": "pron.",
+            "chinese": "任何事物都（没有）"
+          },
+          {
+            "word": "fool",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "蠢人，傻子，笨蛋"
+          },
+          {
+            "word": "sign",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "标记；指示牌，标牌"
+          },
+          {
+            "word": "throat",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "喉咙，咽喉"
+          },
+          {
+            "word": "responsibility",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "责任"
+          },
+          {
+            "word": "cause",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "起因，原因"
+          },
+          {
+            "word": "belt",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "腰带，皮带"
+          },
+          {
+            "word": "station",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "车站"
+          },
+          {
+            "word": "flowerpot",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "花盆"
+          },
+          {
+            "word": "mess",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "脏乱，凌乱"
+          },
+          {
+            "word": "honesty",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "诚实，正直；坦诚"
+          },
+          {
+            "word": "respect",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "尊重"
+          },
+          {
+            "word": "spread",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "传播"
+          },
+          {
+            "word": "lawyer",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "律师"
+          },
+          {
+            "word": "urgent",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "紧急的，急迫的"
+          },
+          {
+            "word": "citizen",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "市民，城镇居民；公民"
+          },
+          {
+            "word": "click",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "点击（鼠标）"
+          },
+          {
+            "word": "basic",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "基础的，基本的，根本的"
+          },
+          {
+            "word": "avoid",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "避免"
+          },
+          {
+            "word": "address",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "地址"
+          },
+          {
+            "word": "passport",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "护照"
+          },
+          {
+            "word": "careless",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "不小心的，粗心的，疏忽的"
+          },
+          {
+            "word": "aware",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "意识到的，明白的，知道的"
+          },
+          {
+            "word": "cheat",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "欺诈，欺骗"
+          },
+          {
+            "word": "trust",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "信任，信赖，相信"
+          },
+          {
+            "word": "enemy",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "敌人"
+          },
+          {
+            "word": "behave",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "表现"
+          },
+          {
+            "word": "cyberbullying",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "网络欺凌"
+          }
+        ]
+      },
+      {
+        "unit": 6,
+        "name": "Unit 6",
+        "words": [
+          {
+            "word": "lost",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "丢失的，遗失的"
+          },
+          {
+            "word": "ground",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "地，地面"
+          },
+          {
+            "word": "scared",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "害怕的，恐惧的"
+          },
+          {
+            "word": "shocking",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "惊人的，骇人的，令人难以置信的"
+          },
+          {
+            "word": "coach",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "公共马车，四轮大马车"
+          },
+          {
+            "word": "straight",
+            "phonetic": "",
+            "pos": "adv.",
+            "chinese": "笔直地，成直线地"
+          },
+          {
+            "word": "sand",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "沙滩"
+          },
+          {
+            "word": "flood",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "洪水，水灾"
+          },
+          {
+            "word": "thick",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "浓密的；混浊的"
+          },
+          {
+            "word": "shower",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "一大批，一阵（在空中洒落或出现的小而轻的东西）"
+          },
+          {
+            "word": "expert",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "专家"
+          },
+          {
+            "word": "timeline",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "时间表"
+          },
+          {
+            "word": "reaction",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "反应"
+          },
+          {
+            "word": "airline",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "航空公司"
+          },
+          {
+            "word": "weekday",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "工作日"
+          },
+          {
+            "word": "railway",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "铁路，铁道"
+          },
+          {
+            "word": "rainstorm",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "暴风雨"
+          },
+          {
+            "word": "service",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "服务"
+          },
+          {
+            "word": "motherland",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "祖国"
+          },
+          {
+            "word": "terrible",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "非常严重的"
+          },
+          {
+            "word": "warning",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "警告，警示"
+          },
+          {
+            "word": "text",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "短信，短消息"
+          },
+          {
+            "word": "danger",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "危险"
+          },
+          {
+            "word": "tsunami",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "海啸"
+          },
+          {
+            "word": "iron",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "铁"
+          },
+          {
+            "word": "fashion",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "时尚"
+          },
+          {
+            "word": "slim",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "苗条的，修长的"
+          },
+          {
+            "word": "bleed",
+            "phonetic": "",
+            "pos": "v.",
+            "chinese": "流血，出血"
+          },
+          {
+            "word": "uncomfortable",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "不舒服的"
+          },
+          {
+            "word": "jeans",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "牛仔裤"
+          },
+          {
+            "word": "encouraging",
+            "phonetic": "",
+            "pos": "adj.",
+            "chinese": "令人鼓舞的，振奋人心的"
+          },
+          {
+            "word": "herself",
+            "phonetic": "",
+            "pos": "pron.",
+            "chinese": "她自己"
+          },
+          {
+            "word": "university",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "大学"
+          },
+          {
+            "word": "honour",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "荣幸，光荣"
+          },
+          {
+            "word": "wound",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "伤痛，伤害"
+          },
+          {
+            "word": "heroine",
+            "phonetic": "",
+            "pos": "n.",
+            "chinese": "女英雄"
           }
         ]
       }
