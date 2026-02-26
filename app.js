@@ -28,7 +28,6 @@ function initElements() {
   el.grade8Books = document.getElementById("grade8-books");
   el.selectorPanel = document.getElementById("selector-panel");
   el.learnPanel = document.getElementById("learn-panel");
-  el.bookTitle = document.getElementById("book-title");
   el.progressTip = document.getElementById("progress-tip");
   el.progressSteps = document.getElementById("progress-steps");
   el.wordText = document.getElementById("word-text");
@@ -298,14 +297,11 @@ function selectBook(bookKey, unitNum, btnNode) {
   if (book.hasUnits && unitNum !== null) {
     const unit = book.units.find(u => u.unit === unitNum);
     state.words = unit ? [...unit.words] : [];  // 复制数组，不修改原数据
-    el.bookTitle.textContent = `${book.name} - ${unit ? unit.name : ''} - 学习模式`;
   } else if (book.hasUnits) {
     // 全部单元
     state.words = book.units.flatMap(u => u.words);
-    el.bookTitle.textContent = `${book.name} - 学习模式`;
   } else {
     state.words = book.words ? [...book.words] : [];
-    el.bookTitle.textContent = `${book.name} - 学习模式`;
   }
   
   // 根据模式决定是否打乱
@@ -659,7 +655,6 @@ function startPractice() {
   state.wordHistory = [];
   state.currentIndex = -1;
   
-  el.bookTitle.textContent = "📝 练习模式 - 已学单词";
   el.learnPanel.classList.remove("hidden");
   nextQuestion();
 }
@@ -680,7 +675,6 @@ function startLearnedReview() {
   state.words = review.map(w => ({ word: w.word, chinese: w.chinese, phonetic: "", pos: "" }));
   state.wordHistory = [];
   state.currentIndex = -1;
-  el.bookTitle.textContent = "📖 复习模式 - 已学单词";
   nextQuestion();
 }
 
