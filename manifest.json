@@ -1,6 +1,6 @@
 {
-  "name": "单词练习",
-  "short_name": "单词练习",
+  "name": "英语词汇通",
+  "short_name": "词汇通",
   "description": "胡祖源的英语单词学习助手",
   "start_url": "/zuyuan-words/",
   "display": "standalone",
