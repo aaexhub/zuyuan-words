@@ -445,10 +445,11 @@ function updateWordDisplay() {
 
 function renderOptions() {
   el.options.innerHTML = "";
-  state.options.forEach((opt) => {
+  const labels = ['A', 'B', 'C', 'D'];
+  state.options.forEach((opt, index) => {
     const btn = document.createElement("button");
     btn.className = "option-btn";
-    btn.textContent = opt.chinese;
+    btn.innerHTML = `<span class="option-label">${labels[index]}</span><span class="option-text">${opt.chinese}</span>`;
     btn.addEventListener("click", () => checkAnswer(opt, btn));
     el.options.appendChild(btn);
   });
