@@ -1,11 +1,12 @@
-const CACHE_NAME = 'word-app-v1';
+const CACHE_NAME = 'word-app-v2-20260227';
 const urlsToCache = [
   '/',
   '/index.html',
   '/app.js',
   '/style.css',
   '/words.json',
-  '/manifest.json'
+  '/manifest.json',
+  '/hero-bg.jpg'
 ];
 
 // 安装 Service Worker
