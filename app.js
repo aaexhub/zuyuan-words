@@ -1,6 +1,6 @@
 const STORAGE_KEY = "wordAppStateV2";
 const DAILY_GOAL = 5;
-const APP_VERSION = "2026-02-27-v2";  // 版本号，用于强制刷新缓存
+const APP_VERSION = "2026-02-27-v3";  // 版本号，用于强制刷新缓存
 const PAGE_SIZE = 20;  // 每页显示20条
 
 const state = {
