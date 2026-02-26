@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0c7b93" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="祖源单词" />
+    <title>祖源单词记忆</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="app">
+      <header class="hero">
+        <h1>单词记忆小程序</h1>
+        <p>学习 + 测试 + 三色标记 + 错词本</p>
+      </header>
+
+      <section class="panel" id="selector-panel">
+        <h2>选择学习册别</h2>
+        <div id="book-grid" class="book-grid"></div>
+        <div id="unit-selector" class="unit-selector hidden">
+          <h3>选择单元</h3>
+          <div id="unit-grid" class="unit-grid"></div>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="learn-panel">
+        <div class="learn-top">
+          <div style="flex:1">
+            <h2 id="book-title">学习模式</h2>
+            <p id="progress-tip"></p>
+            <div id="progress-steps" class="progress-steps"></div>
+          </div>
+          <div class="mini-calendar" id="mini-calendar"></div>
+          <div class="top-buttons">
+            <button id="btn-prev" class="btn ghost">上一题</button>
+            <button id="btn-pronounce" class="btn ghost">发音</button>
+            <select id="pronounce-type" class="btn ghost">
+              <option value="1">美式发音</option>
+              <option value="2">英式发音</option>
+            </select>
+            <button id="btn-next" class="btn">下一题</button>
+          </div>
+        </div>
+
+        <div class="card" id="word-card">
+          <div class="word-header">
+            <h3 id="word-text">-</h3>
+            <button id="btn-toggle-word" class="btn ghost small">🙈 隐藏</button>
+          </div>
+          <p id="phonetic-text" class="phonetic"></p>
+          <p id="root-tip" class="root-tip"></p>
+        </div>
+
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="choice">选择题</button>
+          <button class="mode-tab" data-mode="spell">拼写</button>
+          <button id="btn-shuffle" class="btn ghost">🔀 打乱顺序</button>
+        </div>
+
+        <div id="choice-mode">
+          <div id="options" class="options"></div>
+        </div>
+
+        <div id="spell-mode" class="hidden">
+          <div class="spell-area">
+            <p id="spell-hint" class="spell-hint"></p>
+            <input type="text" id="spell-input" class="spell-input" placeholder="输入单词..." autocomplete="off" />
+            <div class="spell-buttons">
+              <button id="btn-check-spell" class="btn">检查</button>
+              <button id="btn-show-answer" class="btn ghost">显示答案</button>
+            </div>
+            <p id="spell-result" class="spell-result"></p>
+          </div>
+        </div>
+
+        <div id="answer-result" class="answer-result"></div>
+
+        <div class="mark-row">
+          <button data-mark="red" class="btn mark red">不会 🔴</button>
+          <button data-mark="yellow" class="btn mark yellow">模糊 🟡</button>
+          <button data-mark="green" class="btn mark green">会了 🟢</button>
+        </div>
+      </section>
+
+      <section class="panel tabs-panel">
+        <div class="tabs">
+          <button class="tab active" data-tab="wrong">错词本</button>
+          <button class="tab" data-tab="learned">已学习</button>
+          <button class="tab" data-tab="calendar">学习日历</button>
+          <button class="tab" data-tab="stats">进度</button>
+        </div>
+
+        <div id="tab-wrong" class="tab-view">
+          <h2>错词本（红色词）</h2>
+          <ul id="wrong-list" class="word-list"></ul>
+        </div>
+
+        <div id="tab-learned" class="tab-view hidden">
+          <h2>已学习词库</h2>
+          <div class="learned-stats">
+            <span>共 <strong id="learned-count">0</strong> 词</span>
+            <div>
+              <button class="btn" id="btn-practice-learned">📝 练习已学单词</button>
+              <button class="btn ghost" id="btn-review-learned">📖 复习模式</button>
+            </div>
+          </div>
+          <ul id="learned-list" class="word-list"></ul>
+        </div>
+
+        <div id="tab-calendar" class="tab-view hidden">
+          <h2>学习日历</h2>
+          <div class="calendar-stats">
+            <div class="cal-stat">
+              <div class="cal-num" id="total-days">0</div>
+              <div class="cal-label">累计天数</div>
+            </div>
+            <div class="cal-stat">
+              <div class="cal-num" id="total-words">0</div>
+              <div class="cal-label">累计单词</div>
+            </div>
+            <div class="cal-stat">
+              <div class="cal-num" id="streak-days">0</div>
+              <div class="cal-label">连续天数</div>
+            </div>
+          </div>
+          <div id="calendar-grid" class="calendar-grid"></div>
+        </div>
+
+        <div id="tab-stats" class="tab-view hidden">
+          <h2>学习进度</h2>
+          <div id="stats-grid" class="stats-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js?v=20260226v4"></script>
+  </body>
+</html>
