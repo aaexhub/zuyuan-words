@@ -678,8 +678,6 @@ function renderLearnedList() {
     renderLearnedList();
   });
 }
-  });
-}
 
 function startPractice() {
   state.practiceMode = true;
