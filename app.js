@@ -1,12 +1,12 @@
-const STORAGE_KEY = "wordAppStateV2";
+const STORAGE_KEY = "wordAppMultiUserV1";
 const DAILY_GOAL = 5;
-const APP_VERSION = "2026-02-27-v3";  // 版本号，用于强制刷新缓存
-const PAGE_SIZE = 20;  // 每页显示20条
+const APP_VERSION = "2026-02-28-v1";  // 多用户版本
+const PAGE_SIZE = 20;
 
 const state = {
   books: {},
   selectedBook: "",
-  selectedUnit: null,  // 当前选择的Unit
+  selectedUnit: null,
   words: [],
   currentWord: null,
   wordHistory: [],
@@ -15,17 +15,173 @@ const state = {
   answered: false,
   answerCorrect: false,
   learnMode: "choice",
-  practiceMode: false,  // 练习模式
-  wordHidden: false,  // 单词是否隐藏
-  shuffleMode: false,  // 是否打乱顺序
-  sequentialIndex: 0,  // 顺序学习的索引
-  appState: loadState(),
+  practiceMode: false,
+  wordHidden: false,
+  shuffleMode: false,
+  sequentialIndex: 0,
+  // 多用户相关
+  currentUser: null,
+  appState: null,  // 当前用户的数据
   // 分页状态
   wrongPage: 1,
   learnedPage: 1
 };
 
 const el = {};
+
+// ========== 多用户管理 ==========
+
+function loadGlobalData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      return {
+        users: {},
+        currentUser: null
+      };
+    }
+    return JSON.parse(raw);
+  } catch {
+    return { users: {}, currentUser: null };
+  }
+}
+
+function saveGlobalData(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function getUserData(username) {
+  const global = loadGlobalData();
+  if (!global.users[username]) {
+    // 创建新用户数据
+    global.users[username] = {
+      progress: {},
+      dailyCount: {},
+      quizLogs: [],
+      calendar: {},
+      pronounceType: 1,
+      createdAt: Date.now()
+    };
+    saveGlobalData(global);
+  }
+  return global.users[username];
+}
+
+function switchUser(username) {
+  const global = loadGlobalData();
+  global.currentUser = username;
+  saveGlobalData(global);
+  state.currentUser = username;
+  state.appState = getUserData(username);
+  
+  // 重置学习状态
+  state.selectedBook = "";
+  state.selectedUnit = null;
+  state.words = [];
+  state.wordHistory = [];
+  state.currentIndex = -1;
+  state.currentWord = null;
+  
+  // 隐藏用户面板，显示主界面
+  document.getElementById("user-panel").classList.add("hidden");
+  
+  // 更新用户显示
+  updateUserDisplay();
+  
+  // 刷新界面
+  renderBooks();
+  renderWrongBook();
+  renderLearnedList();
+  renderCalendar();
+  renderStats();
+  
+  // 回到选择面板
+  el.selectorPanel.classList.remove("hidden");
+  el.learnPanel.classList.add("hidden");
+  el.unitSelector.classList.add("hidden");
+}
+
+function updateUserDisplay() {
+  const display = document.getElementById("current-user-display");
+  if (display && state.currentUser) {
+    const avatar = state.currentUser.charAt(0).toUpperCase();
+    display.innerHTML = `
+      <div class="user-avatar">${avatar}</div>
+      <span>${state.currentUser}</span>
+    `;
+  }
+}
+
+function showUserPanel() {
+  document.getElementById("user-panel").classList.remove("hidden");
+  renderUserList();
+}
+
+function renderUserList() {
+  const global = loadGlobalData();
+  const userList = document.getElementById("user-list");
+  userList.innerHTML = "";
+  
+  const usernames = Object.keys(global.users);
+  
+  if (usernames.length === 0) {
+    userList.innerHTML = '<p style="color:#999;text-align:center;width:100%">还没有用户，请创建一个</p>';
+  } else {
+    usernames.forEach(username => {
+      const userData = global.users[username];
+      const learnedCount = Object.keys(userData.progress || {}).length;
+      const avatar = username.charAt(0).toUpperCase();
+      
+      const item = document.createElement("div");
+      item.className = "user-item";
+      item.innerHTML = `
+        <div class="user-avatar">${avatar}</div>
+        <div class="user-name">${username}</div>
+        <div class="user-stats">已学 ${learnedCount} 词</div>
+      `;
+      item.addEventListener("click", () => switchUser(username));
+      userList.appendChild(item);
+    });
+  }
+}
+
+function addNewUser() {
+  const input = document.getElementById("new-user-input");
+  const name = input.value.trim();
+  
+  if (!name) {
+    alert("请输入用户名");
+    return;
+  }
+  
+  if (name.length > 10) {
+    alert("用户名最多10个字符");
+    return;
+  }
+  
+  const global = loadGlobalData();
+  if (global.users[name]) {
+    alert("用户名已存在");
+    return;
+  }
+  
+  // 创建新用户
+  global.users[name] = {
+    progress: {},
+    dailyCount: {},
+    quizLogs: [],
+    calendar: {},
+    pronounceType: 1,
+    createdAt: Date.now()
+  };
+  global.currentUser = name;
+  saveGlobalData(global);
+  
+  input.value = "";
+  switchUser(name);
+}
+
+// ========== 原有功能（适配多用户） ==========
 
 function initElements() {
   el.grade7Books = document.getElementById("grade7-books");
@@ -68,21 +224,30 @@ function initElements() {
   el.btnShuffle = document.getElementById("btn-shuffle");
 }
 
-init();
-
 async function init() {
   try {
     initElements();
     const resp = await fetch("./words.json");
     const data = await resp.json();
     state.books = data;
-    renderBooks();
-    renderMiniCalendar();
-    setupEvents();
+    
+    // 检查是否有当前用户
+    const global = loadGlobalData();
+    if (global.currentUser && global.users[global.currentUser]) {
+      state.currentUser = global.currentUser;
+      state.appState = getUserData(global.currentUser);
+      updateUserDisplay();
+      renderBooks();
+    } else {
+      // 显示用户选择面板
+      showUserPanel();
+    }
+    
     renderWrongBook();
     renderLearnedList();
     renderCalendar();
     renderStats();
+    setupEvents();
     
     // 注册 Service Worker
     if ('serviceWorker' in navigator) {
@@ -102,13 +267,7 @@ function setupEvents() {
 
   // 隐藏/显示单词按钮
   if (el.btnToggleWord) {
-    console.log("绑定隐藏按钮事件");  // 调试日志
-    el.btnToggleWord.addEventListener("click", function() {
-      console.log("隐藏按钮被点击");  // 调试日志
-      toggleWordVisibility();
-    });
-  } else {
-    console.log("找不到隐藏按钮");  // 调试日志
+    el.btnToggleWord.addEventListener("click", toggleWordVisibility);
   }
 
   // 打乱/顺序切换按钮
@@ -131,7 +290,6 @@ function setupEvents() {
       el.choiceMode.classList.toggle("hidden", state.learnMode !== "choice");
       el.spellMode.classList.toggle("hidden", state.learnMode !== "spell");
       
-      // 切换到拼写模式时自动隐藏单词
       if (state.learnMode === "spell" && state.currentWord) {
         state.wordHidden = true;
         updateWordDisplay();
@@ -174,6 +332,13 @@ function setupEvents() {
       if (tabName === "calendar") renderCalendar();
     });
   });
+  
+  // 用户相关事件
+  document.getElementById("btn-switch-user").addEventListener("click", showUserPanel);
+  document.getElementById("btn-add-user").addEventListener("click", addNewUser);
+  document.getElementById("new-user-input").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") addNewUser();
+  });
 }
 
 function toggleShuffleMode() {
@@ -187,7 +352,6 @@ function toggleShuffleMode() {
       el.btnShuffle.classList.remove("active");
     }
   }
-  // 重新加载当前单元
   if (state.selectedBook && state.selectedUnit !== undefined) {
     const book = state.books[state.selectedBook];
     if (book.hasUnits && state.selectedUnit !== null) {
@@ -211,10 +375,7 @@ function toggleShuffleMode() {
 }
 
 function renderBooks() {
-  if (!el.grade7Books || !el.grade8Books) {
-    console.error("grade7Books or grade8Books not found");
-    return;
-  }
+  if (!el.grade7Books || !el.grade8Books) return;
   
   el.grade7Books.innerHTML = "";
   el.grade8Books.innerHTML = "";
@@ -222,12 +383,8 @@ function renderBooks() {
   const grade7Keys = ["grade7_upper", "grade7_lower"];
   const grade8Keys = ["grade8_upper", "grade8_lower"];
   
-  // 渲染七年级
   grade7Keys.forEach(bookKey => {
-    if (!state.books[bookKey]) {
-      console.warn(`${bookKey} not found in state.books`);
-      return;
-    }
+    if (!state.books[bookKey]) return;
     const book = state.books[bookKey];
     const learnedCount = countLearnedWords(bookKey);
     const total = book.hasUnits 
@@ -247,12 +404,8 @@ function renderBooks() {
     el.grade7Books.appendChild(btn);
   });
   
-  // 渲染八年级
   grade8Keys.forEach(bookKey => {
-    if (!state.books[bookKey]) {
-      console.warn(`${bookKey} not found in state.books`);
-      return;
-    }
+    if (!state.books[bookKey]) return;
     const book = state.books[bookKey];
     const learnedCount = countLearnedWords(bookKey);
     const total = book.hasUnits 
@@ -271,30 +424,24 @@ function renderBooks() {
     });
     el.grade8Books.appendChild(btn);
   });
-  
-  console.log("renderBooks completed");
 }
 
 function showUnitSelector(bookKey, bookBtn) {
   const book = state.books[bookKey];
   if (!book || !book.units) return;
   
-  // 高亮选中的册
   document.querySelectorAll(".book-btn").forEach((b) => b.classList.remove("active"));
   bookBtn.classList.add("active");
   
-  // 显示Unit选择器
   el.unitSelector.classList.remove("hidden");
   el.unitGrid.innerHTML = "";
   
-  // 添加"全部"选项
   const allBtn = document.createElement("button");
   allBtn.className = "unit-btn";
   allBtn.innerHTML = `<div class="unit-name">全部</div><div class="unit-count">${book.units.reduce((s, u) => s + u.words.length, 0)} 词</div>`;
   allBtn.addEventListener("click", () => selectBook(bookKey, null, bookBtn));
   el.unitGrid.appendChild(allBtn);
   
-  // 添加各Unit按钮
   book.units.forEach((unit) => {
     const btn = document.createElement("button");
     btn.className = "unit-btn";
@@ -310,33 +457,28 @@ function selectBook(bookKey, unitNum, btnNode) {
   
   const book = state.books[bookKey];
   
-  // 获取单词列表
   if (book.hasUnits && unitNum !== null) {
     const unit = book.units.find(u => u.unit === unitNum);
-    state.words = unit ? [...unit.words] : [];  // 复制数组，不修改原数据
+    state.words = unit ? [...unit.words] : [];
   } else if (book.hasUnits) {
-    // 全部单元
     state.words = book.units.flatMap(u => u.words);
   } else {
     state.words = book.words ? [...book.words] : [];
   }
   
-  // 根据模式决定是否打乱
   if (state.shuffleMode) {
     state.words = shuffleArray(state.words);
   }
   
   state.wordHistory = [];
   state.currentIndex = -1;
-  state.sequentialIndex = 0;  // 重置顺序索引
+  state.sequentialIndex = 0;
   state.practiceMode = false;
 
-  // 更新按钮状态
   document.querySelectorAll(".book-btn").forEach((b) => b.classList.remove("active"));
   document.querySelectorAll(".unit-btn").forEach((b) => b.classList.remove("active"));
   if (btnNode) btnNode.classList.add("active");
 
-  // 隐藏选择面板，只显示学习面板
   el.selectorPanel.classList.add("hidden");
   el.unitSelector.classList.add("hidden");
   el.learnPanel.classList.remove("hidden");
@@ -391,21 +533,18 @@ function getNewWord() {
   });
   state.wordHistory.forEach(w => learned.add(w.word.toLowerCase()));
   
-  // 顺序模式：按顺序找未学的单词
   if (!state.shuffleMode) {
     for (let i = state.sequentialIndex; i < state.words.length; i++) {
       const word = state.words[i];
       if (!learned.has(word.word.toLowerCase())) {
-        state.sequentialIndex = i + 1;  // 更新索引
+        state.sequentialIndex = i + 1;
         return word;
       }
     }
-    // 如果都学完了，从头开始
     state.sequentialIndex = 0;
     return state.words[0];
   }
   
-  // 随机模式：从未学单词中随机选
   const unlearned = state.words.filter(w => !learned.has(w.word.toLowerCase()));
   if (unlearned.length === 0) return state.words[Math.floor(Math.random() * state.words.length)];
   return unlearned[Math.floor(Math.random() * unlearned.length)];
@@ -423,7 +562,6 @@ function shuffleArray(array) {
 function renderWord() {
   if (!state.currentWord) return;
   
-  // 切换模式时重置隐藏状态
   state.wordHidden = (state.learnMode === "spell");
   updateWordDisplay();
   
@@ -487,7 +625,7 @@ function checkAnswer(option, btnNode) {
   }
 
   pushQuizLog(state.answerCorrect);
-  saveState();
+  saveCurrentUserState();
   renderStats();
 }
 
@@ -518,10 +656,9 @@ function checkSpelling() {
 
   pushQuizLog(state.answerCorrect);
   incrementTodayCount();
-  saveState();
+  saveCurrentUserState();
   renderStats();
   renderProgressSteps();
-  renderMiniCalendar();
 }
 
 function showSpellAnswer() {
@@ -550,12 +687,11 @@ function markCurrentWord(mark) {
 
   incrementTodayCount();
   updateCalendar();
-  saveState();
+  saveCurrentUserState();
   renderWrongBook();
   renderLearnedList();
   renderStats();
   renderProgressSteps();
-  renderMiniCalendar();
 }
 
 function renderProgressSteps() {
@@ -574,33 +710,8 @@ function renderProgressSteps() {
     : `今日进度: ${todayLearned}/${DAILY_GOAL}`;
 }
 
-function renderMiniCalendar() {
-  if (!el.miniCalendar) return;
-  
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const calendar = state.appState.calendar || {};
-  
-  let html = `<div class="mini-calendar-header">${month + 1}月学习记录</div>`;
-  html += '<div class="mini-calendar-grid">';
-  
-  for (let day = 1; day <= daysInMonth; day++) {
-    const date = new Date(year, month, day);
-    const dk = dateKey(date);
-    const count = calendar[dk] || 0;
-    const isToday = dk === dateKey(today);
-    const hasLearned = count > 0 ? "learned" : "";
-    const todayClass = isToday ? "today" : "";
-    html += `<div class="mini-cal-day ${hasLearned} ${todayClass}" title="${day}日: ${count}词"></div>`;
-  }
-  
-  html += '</div>';
-  el.miniCalendar.innerHTML = html;
-}
-
 function renderWrongBook() {
+  if (!state.appState) return;
   const redWords = [];
   Object.entries(state.appState.progress).forEach(([bookKey, map]) => {
     Object.entries(map).forEach(([key, item]) => {
@@ -620,7 +731,6 @@ function renderWrongBook() {
     return;
   }
 
-  // 分页
   const totalPages = Math.ceil(redWords.length / PAGE_SIZE);
   const start = (state.wrongPage - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
@@ -632,7 +742,6 @@ function renderWrongBook() {
     el.wrongList.appendChild(li);
   });
 
-  // 渲染分页
   renderPagination("wrong-pagination", state.wrongPage, totalPages, (page) => {
     state.wrongPage = page;
     renderWrongBook();
@@ -640,6 +749,7 @@ function renderWrongBook() {
 }
 
 function renderLearnedList() {
+  if (!state.appState) return;
   const words = [];
   Object.entries(state.appState.progress).forEach(([bookKey, map]) => {
     Object.entries(map).forEach(([key, item]) => {
@@ -659,7 +769,6 @@ function renderLearnedList() {
     return;
   }
 
-  // 分页
   const totalPages = Math.ceil(words.length / PAGE_SIZE);
   const start = (state.learnedPage - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
@@ -672,7 +781,6 @@ function renderLearnedList() {
     el.learnedList.appendChild(li);
   });
 
-  // 渲染分页
   renderPagination("learned-pagination", state.learnedPage, totalPages, (page) => {
     state.learnedPage = page;
     renderLearnedList();
@@ -692,7 +800,6 @@ function startPractice() {
     return;
   }
 
-  // 随机选择练习
   const practice = words.sort(() => Math.random() - 0.5).slice(0, 10);
   state.words = practice.map(w => ({ word: w.word, chinese: w.chinese, phonetic: "", pos: "" }));
   state.wordHistory = [];
@@ -751,6 +858,7 @@ function renderPagination(containerId, currentPage, totalPages, onPageChange) {
 }
 
 function renderCalendar() {
+  if (!state.appState) return;
   const calendar = state.appState.calendar || {};
   const totalDays = Object.keys(calendar).length;
   const totalWords = Object.values(state.appState.dailyCount || {}).reduce((a, b) => a + b, 0);
@@ -797,6 +905,7 @@ function renderCalendar() {
 }
 
 function renderStats() {
+  if (!state.appState) return;
   const stats = computeStats();
   const progress = Math.min(100, Math.round((stats.todayCount / DAILY_GOAL) * 100));
   const status = stats.todayCount >= DAILY_GOAL ? "✅ 已完成" : `${stats.todayCount}/${DAILY_GOAL}`;
@@ -865,10 +974,12 @@ function getRootTip(word) {
 }
 
 function countLearnedWords(bookKey) {
+  if (!state.appState) return 0;
   return Object.keys(state.appState.progress[bookKey] || {}).length;
 }
 
 function getTodayLearnedCount() {
+  if (!state.appState) return 0;
   return state.appState.dailyCount[dateKey(new Date())] || 0;
 }
 
@@ -905,33 +1016,19 @@ function wordId(word) {
 }
 
 function getPronounceType() {
-  return state.appState.pronounceType || 1;
+  return state.appState?.pronounceType || 1;
 }
 
 function setPronounceType(type) {
   state.appState.pronounceType = type;
-  saveState();
+  saveCurrentUserState();
 }
 
-function loadState() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { progress: {}, dailyCount: {}, quizLogs: [], calendar: {}, pronounceType: 1 };
-    const parsed = JSON.parse(raw);
-    return {
-      progress: parsed.progress || {},
-      dailyCount: parsed.dailyCount || {},
-      quizLogs: parsed.quizLogs || [],
-      calendar: parsed.calendar || {},
-      pronounceType: parsed.pronounceType || 1
-    };
-  } catch {
-    return { progress: {}, dailyCount: {}, quizLogs: [], calendar: {}, pronounceType: 1 };
-  }
-}
-
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state.appState));
+function saveCurrentUserState() {
+  if (!state.currentUser) return;
+  const global = loadGlobalData();
+  global.users[state.currentUser] = state.appState;
+  saveGlobalData(global);
 }
 
 function dateKey(date) {
@@ -940,3 +1037,6 @@ function dateKey(date) {
   const d = String(date.getDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
 }
+
+// 启动
+init();

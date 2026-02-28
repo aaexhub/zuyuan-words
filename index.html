@@ -10,17 +10,37 @@
     <title>英语词汇通</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="apple-touch-icon" href="icon-192.png" />
-    <link rel="stylesheet" href="style.css?v=20260226v5" />
+    <link rel="stylesheet" href="style.css?v=20260228v1" />
   </head>
   <body>
     <div class="bg-orb orb-a"></div>
     <div class="bg-orb orb-b"></div>
 
+    <!-- 用户选择面板 -->
+    <div id="user-panel" class="user-panel hidden">
+      <div class="user-panel-content">
+        <h2>👋 欢迎使用英语词汇通</h2>
+        <p class="user-hint">选择或创建你的学习档案</p>
+        
+        <div id="user-list" class="user-list"></div>
+        
+        <div class="user-add">
+          <input type="text" id="new-user-input" placeholder="输入新用户名..." maxlength="10" />
+          <button id="btn-add-user" class="btn">添加用户</button>
+        </div>
+      </div>
+    </div>
+
     <main class="app">
       <header class="hero">
+        <!-- 用户切换栏 -->
+        <div id="user-bar" class="user-bar">
+          <div id="current-user-display" class="current-user"></div>
+          <button id="btn-switch-user" class="btn ghost small">切换用户</button>
+        </div>
         <h1>英语词汇通</h1>
         <p class="subtitle">外语教学与研究出版社教材</p>
-        <p class="version">version 1.0</p>
+        <p class="version">version 1.1</p>
       </header>
 
       <section class="panel" id="selector-panel">
@@ -149,6 +169,6 @@
       </section>
     </main>
 
-    <script src="app.js?v=20260226v6"></script>
+    <script src="app.js?v=20260228v1"></script>
   </body>
 </html>
