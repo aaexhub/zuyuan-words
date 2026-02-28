@@ -301,6 +301,7 @@ select.btn.ghost {
 }
 
 .mode-tab {
+  font-size: 13px;
   border: 1px solid var(--line);
   background: #fff;
   border-radius: 8px;
@@ -316,6 +317,7 @@ select.btn.ghost {
 }
 
 #btn-shuffle {
+  font-size: 13px;
   margin-left: auto;
   font-size: 13px;
 }

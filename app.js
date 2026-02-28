@@ -347,10 +347,10 @@ function toggleShuffleMode() {
   state.shuffleMode = !state.shuffleMode;
   if (el.btnShuffle) {
     if (state.shuffleMode) {
-      el.btnShuffle.textContent = "📊 顺序学习";
+      el.btnShuffle.textContent = "顺序学习";
       el.btnShuffle.classList.add("active");
     } else {
-      el.btnShuffle.textContent = "🔀 打乱顺序";
+      el.btnShuffle.textContent = "打乱顺序";
       el.btnShuffle.classList.remove("active");
     }
   }
@@ -600,12 +600,12 @@ function updateWordDisplay() {
     el.wordText.textContent = "?????";
     el.phoneticText.textContent = "";
     el.rootTip.textContent = "";
-    if (el.btnToggleWord) el.btnToggleWord.textContent = "👁️ 显示";
+    if (el.btnToggleWord) el.btnToggleWord.textContent = "显示";
   } else {
     el.wordText.textContent = state.currentWord.word;
     el.phoneticText.textContent = state.currentWord.phonetic || "";
     el.rootTip.textContent = getRootTip(state.currentWord.word);
-    if (el.btnToggleWord) el.btnToggleWord.textContent = "🙈 隐藏";
+    if (el.btnToggleWord) el.btnToggleWord.textContent = "隐藏";
   }
 }
 
