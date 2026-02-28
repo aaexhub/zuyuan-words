@@ -325,13 +325,23 @@ function setupEvents() {
 
   document.querySelectorAll(".tab").forEach((tab) => {
     tab.addEventListener("click", () => {
-      document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
-      tab.classList.add("active");
       const tabName = tab.dataset.tab;
-      document.querySelectorAll(".tab-view").forEach((view) => view.classList.add("hidden"));
       const view = document.getElementById(`tab-${tabName}`);
-      if (view) view.classList.remove("hidden");
-      if (tabName === "calendar") renderCalendar();
+      const isActive = tab.classList.contains("active");
+      const isHidden = view && view.classList.contains("hidden");
+      
+      if (isActive && !isHidden) {
+        // 当前已展开，收起
+        tab.classList.remove("active");
+        if (view) view.classList.add("hidden");
+      } else {
+        // 切换到新tab
+        document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
+        document.querySelectorAll(".tab-view").forEach((v) => v.classList.add("hidden"));
+        tab.classList.add("active");
+        if (view) view.classList.remove("hidden");
+        if (tabName === "calendar") renderCalendar();
+      }
     });
   });
   
