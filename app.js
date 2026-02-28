@@ -499,6 +499,29 @@ function selectBook(bookKey, unitNum, btnNode) {
 }
 
 function nextQuestion() {
+  // 自动标记当前单词（如果还没标记）
+  if (state.currentWord && state.selectedBook) {
+    const bookKey = state.selectedBook;
+    const wordKey = wordId(state.currentWord);
+    if (!state.appState.progress[bookKey] || !state.appState.progress[bookKey][wordKey]) {
+      // 当前单词还没标记，自动标记为"模糊"并计数
+      if (!state.appState.progress[bookKey]) {
+        state.appState.progress[bookKey] = {};
+      }
+      state.appState.progress[bookKey][wordKey] = {
+        mark: "yellow",
+        updatedAt: Date.now(),
+        word: state.currentWord.word,
+        chinese: state.currentWord.chinese
+      };
+      incrementTodayCount();
+      updateCalendar();
+      saveCurrentUserState();
+      renderWrongBook();
+      renderLearnedList();
+      renderStats();
+    }
+  }
   if (!state.selectedBook || !state.words.length) return;
 
   const todayLearned = getTodayLearnedCount();
