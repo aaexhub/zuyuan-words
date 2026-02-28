@@ -536,12 +536,6 @@ function nextQuestion() {
   if (!state.selectedBook || !state.words.length) return;
 
   const todayLearned = getTodayLearnedCount();
-  if (todayLearned >= DAILY_GOAL && !state.practiceMode) {
-    el.progressTip.textContent = "🎉 今日目标已完成！可继续练习";
-    renderProgressSteps();
-    return;
-  }
-
   state.currentIndex++;
   
   if (state.currentIndex >= state.wordHistory.length) {
