@@ -896,3 +896,13 @@ select.btn.ghost {
     font-size: 16px;
   }
 }
+
+/* 返回按钮行 */
+.back-row {
+  margin-bottom: 12px;
+}
+
+.back-row .btn {
+  padding: 6px 14px;
+  font-size: 14px;
+}

@@ -10,7 +10,7 @@
     <title>英语词汇通</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="apple-touch-icon" href="icon-192.png" />
-    <link rel="stylesheet" href="style.css?v=20260228v2" />
+    <link rel="stylesheet" href="style.css?v=20260228v3" />
   </head>
   <body>
     <div class="bg-orb orb-a"></div>
@@ -40,7 +40,7 @@
         </div>
         <h1>英语词汇通</h1>
         <p class="subtitle">外语教学与研究出版社教材</p>
-        <p class="version">version 1.1</p>
+        <p class="version">version 2.0</p>
       </header>
 
       <section class="panel" id="selector-panel">
@@ -60,20 +60,24 @@
       </section>
 
       <section class="panel hidden" id="learn-panel">
+        <!-- 返回按钮单独一行 -->
+        <div class="back-row">
+          <button id="btn-back" class="btn ghost">← 返回</button>
+        </div>
+        
         <div class="learn-top">
           <div style="flex:1">
             <p id="progress-tip"></p>
             <div id="progress-steps" class="progress-steps"></div>
           </div>
           <div class="top-buttons">
-            <button id="btn-back" class="btn ghost">← 返回</button>
-            <button id="btn-prev" class="btn ghost">上一题</button>
+            <button id="btn-prev" class="btn ghost">上一个</button>
             <button id="btn-pronounce" class="btn ghost">发音</button>
             <select id="pronounce-type" class="btn ghost">
               <option value="1">美式发音</option>
               <option value="2">英式发音</option>
             </select>
-            <button id="btn-next" class="btn">下一题</button>
+            <button id="btn-next" class="btn">下一个</button>
           </div>
         </div>
 
@@ -170,6 +174,6 @@
       </section>
     </main>
 
-    <script src="app.js?v=20260228v2"></script>
+    <script src="app.js?v=20260228v3"></script>
   </body>
 </html>
