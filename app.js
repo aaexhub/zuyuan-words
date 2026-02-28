@@ -520,6 +520,7 @@ function nextQuestion() {
       renderWrongBook();
       renderLearnedList();
       renderStats();
+      renderProgressSteps();
     }
   }
   if (!state.selectedBook || !state.words.length) return;
