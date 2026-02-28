@@ -197,6 +197,7 @@ function initElements() {
   el.answerResult = document.getElementById("answer-result");
   el.btnNext = document.getElementById("btn-next");
   el.btnPrev = document.getElementById("btn-prev");
+  el.btnBack = document.getElementById("btn-back");
   el.btnPronounce = document.getElementById("btn-pronounce");
   el.pronounceType = document.getElementById("pronounce-type");
   el.wrongList = document.getElementById("wrong-list");
@@ -263,6 +264,7 @@ async function init() {
 function setupEvents() {
   el.btnNext.addEventListener("click", nextQuestion);
   if (el.btnPrev) el.btnPrev.addEventListener("click", prevQuestion);
+  if (el.btnBack) el.btnBack.addEventListener("click", goBackToSelection);
   el.btnPronounce.addEventListener("click", pronounceCurrentWord);
 
   // 隐藏/显示单词按钮
@@ -524,6 +526,19 @@ function prevQuestion() {
     state.answered = false;
     renderWord();
   }
+}
+
+function goBackToSelection() {
+  // 返回选择面板
+  el.learnPanel.classList.add("hidden");
+  el.selectorPanel.classList.remove("hidden");
+  el.unitSelector.classList.add("hidden");
+  
+  // 重置状态
+  state.wordHistory = [];
+  state.currentIndex = -1;
+  state.currentWord = null;
+  state.practiceMode = false;
 }
 
 function getNewWord() {
