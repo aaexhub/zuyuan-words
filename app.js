@@ -58,6 +58,7 @@ function getUserData(username) {
       progress: {},
       dailyCount: {},
       quizLogs: [],
+      todayLearnedWords: {},
       calendar: {},
       pronounceType: 1,
       createdAt: Date.now()
@@ -170,6 +171,7 @@ function addNewUser() {
     progress: {},
     dailyCount: {},
     quizLogs: [],
+      todayLearnedWords: {},
     calendar: {},
     pronounceType: 1,
     createdAt: Date.now()
@@ -499,28 +501,36 @@ function selectBook(bookKey, unitNum, btnNode) {
 }
 
 function nextQuestion() {
-  // 自动标记当前单词（如果还没标记）
-  if (state.currentWord && state.selectedBook) {
+  // 处理当前单词的进度计数
+  if (state.currentWord && state.selectedBook && !state.practiceMode) {
     const bookKey = state.selectedBook;
     const wordKey = wordId(state.currentWord);
-    if (!state.appState.progress[bookKey] || !state.appState.progress[bookKey][wordKey]) {
-      // 当前单词还没标记，自动标记为"模糊"并计数
-      if (!state.appState.progress[bookKey]) {
-        state.appState.progress[bookKey] = {};
-      }
+    const todayLearnedWords = getTodayLearnedWords();
+    
+    // 只有今天第一次学这个单词才计入进度
+    if (!todayLearnedWords.includes(wordKey)) {
+      addToTodayLearned(wordKey);
+      incrementTodayCount();
+      updateCalendar();
+      saveCurrentUserState();
+      renderProgressSteps();
+    }
+    
+    // 自动标记（如果还没标记过）
+    if (!state.appState.progress[bookKey]) {
+      state.appState.progress[bookKey] = {};
+    }
+    if (!state.appState.progress[bookKey][wordKey]) {
       state.appState.progress[bookKey][wordKey] = {
         mark: "yellow",
         updatedAt: Date.now(),
         word: state.currentWord.word,
         chinese: state.currentWord.chinese
       };
-      incrementTodayCount();
-      updateCalendar();
       saveCurrentUserState();
       renderWrongBook();
       renderLearnedList();
       renderStats();
-      renderProgressSteps();
     }
   }
   if (!state.selectedBook || !state.words.length) return;
@@ -745,20 +755,20 @@ function markCurrentWord(mark) {
 
 function renderProgressSteps() {
   const todayLearned = getTodayLearnedCount();
+  const todayAccuracy = getTodayAccuracy();
   if (!el.progressSteps) return;
   
   let html = "";
   for (let i = 0; i < DAILY_GOAL; i++) {
     const done = i < todayLearned ? "done" : "";
     const current = i === todayLearned ? "current" : "";
-    html += `<div class="step-dot ${done} ${current}">${i + 1}</div>`;
+    html += `<div class="step-dot ${done} ${current}">${i + 1}<\/div>`;
   }
   el.progressSteps.innerHTML = html;
   el.progressTip.textContent = state.practiceMode 
-    ? `练习模式 | 今日: ${todayLearned}/${DAILY_GOAL}`
-    : `今日进度: ${todayLearned}/${DAILY_GOAL}`;
+    ? `练习模式 | 今日: ${todayLearned}\/${DAILY_GOAL}`
+    : `今日进度: ${todayLearned}\/${DAILY_GOAL} | 正确率: ${todayAccuracy}%`;
 }
-
 function renderWrongBook() {
   if (!state.appState) return;
   const redWords = [];
@@ -1087,5 +1097,35 @@ function dateKey(date) {
   return `${y}-${m}-${d}`;
 }
 
+
+function getTodayLearnedWords() {
+  const today = dateKey(new Date());
+  return (state.appState.todayLearnedWords && state.appState.todayLearnedWords[today]) || [];
+}
+
+function addToTodayLearned(wordKey) {
+  const today = dateKey(new Date());
+  if (!state.appState.todayLearnedWords) {
+    state.appState.todayLearnedWords = {};
+  }
+  if (!state.appState.todayLearnedWords[today]) {
+    state.appState.todayLearnedWords[today] = [];
+  }
+  if (!state.appState.todayLearnedWords[today].includes(wordKey)) {
+    state.appState.todayLearnedWords[today].push(wordKey);
+  }
+}
+
+function getTodayAccuracy() {
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+  const todayTs = todayStart.getTime();
+  
+  const todayLogs = (state.appState.quizLogs || []).filter(x => x.ts >= todayTs);
+  if (todayLogs.length === 0) return 0;
+  
+  const correct = todayLogs.filter(x => x.correct).length;
+  return Math.round((correct / todayLogs.length) * 100);
+}
 // 启动
 init();
